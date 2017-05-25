@@ -5,7 +5,7 @@
     id="temos_corretiva_action"
     name="Ações Corretivas"
     res_model="corretiva.entry_form"
-    view_mode="tree"
+    view_mode="tree,form"
   />
 
   <menuitem
@@ -21,41 +21,63 @@
     <field name="model">corretiva.entry_form</field>
     <field name="arch" type="xml">
       <tree>
-        <field name="entry_xml_filename"/>
-        <field name="entry_form_date_time"/>
-        <field name="entry_date_from_epoch"/>
-        <field name="entry_location_address"/>
-        <field name="entry_location_x"/>
-        <field name="entry_location_y"/>
-        <field name="entry_location_date"/>
-        <field name="entry_location_date_from_epoch"/>
-        <field name="entry_form_name"/>
-        <field name="entry_form_version"/>
-        <field name="entry_form_customer_number"/>
         <field name="entry_form_request_number"/>
-        <field name="entry_form_checkin_pa"/>
-        <field name="entry_form_checkout_pa"/>
-        <field name="entry_form_fault_info_service_now"/>
-        <field name="entry_form_ocurred_fault"/>
-        <field name="entry_form_action_done"/>
-        <field name="entry_form_station_responsible_name"/>
-        <field name="entry_form_station_responsible_email"/>
-        <field name="entry_form_station_email_group"/>
-        <field name="entry_form_station_email_sendto"/>
-        <field name="entry_form_employee_firstname"/>
-        <field name="entry_form_employee_email"/>
-        <field name="entry_form_employee_number"/>
-        <field name="entry_form_employee_driver_id"/>
-        <field name="entry_form_employee_group_name"/>
-        <field name="entry_form_poi_customer_city"/>
-        <field name="entry_form_poi_customer_number"/>
+        <field name="entry_form_customer_number"/>
         <field name="entry_form_poi_customer_name"/>
-        <field name="entry_form_poi_customer_street"/>
-        <field name="entry_form_ref_poi_layer_name"/>
+        <field name="entry_form_version"/>
+        <field name="entry_form_name"/>
+        <field name="entry_form_date_time"/>
+        <field name="entry_form_employee_firstname"/>
         <field name="entry_form_file_ids"/>
         <field name="entry_form_perf_add_ids"/>
         <field name="entry_form_perf_rem_ids"/>
+        <field name="entry_xml_filename"/>
+        <field name="entry_form_foto_1" widget="selection" nolabel="1"/>
+        <field name="entry_form_foto_2" widget="selection" nolabel="1"/>
+        <field name="entry_form_foto_3" widget="selection" nolabel="1"/>
       </tree>
+    </field>
+  </record>
+
+  <record id="temos_corretiva_report_form_view" model="ir.ui.view">
+    <field name="name">temos_corretiva_report_form_view</field>
+    <field name="model">corretiva.entry_form</field>
+    <field  name="arch" type="xml">
+      <form string="Manutenção Corretiva">
+        <header>
+          <!-- Aqui vão os botões -->
+        </header>
+        <sheet>
+          <group>
+            <group>
+              <!--<field name="image" widget="image" nolabel="1"/>-->
+            </group>
+            <group>
+              <field name="entry_form_customer_number" string="Código do Posto"/>
+              <field name="entry_form_poi_customer_name" string="Nome do Posto"/>
+              <field name="entry_form_request_number" string="Chamado"/>
+              <field name="entry_form_date_time" string="Data da Execução"/>
+              <field name="entry_form_employee_firstname" string="Responsável"/>
+              <field name="entry_xml_filename" string="Arquivo XML da Corretiva"/>
+            </group>
+          </group>
+          <group>
+            <notebook>
+              <page string="Materiais Inseridos no Posto">
+                <field name="entry_form_perf_add_ids" nolabel="1"/>
+              </page>
+              <page string="Materiais Removidos no Posto">
+                <field name="entry_form_perf_rem_ids" nolabel="1"/>
+              </page>
+              <page string="Fotos">
+                <field name="entry_form_foto_1" widget="image" nolabel="1"/>
+                <field name="entry_form_foto_2" widget="image" nolabel="1"/>
+                <field name="entry_form_foto_3" widget="image" nolabel="1"/>
+              </page>
+            </notebook>
+          </group>
+        </sheet>
+      </form>
     </field>
   </record>
 </odoo>
