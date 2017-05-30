@@ -21,7 +21,7 @@
 ##############################################################################
 
 {
-    'name': u'Temos - Manutenção Corretiva',
+    'name': u'Temos - Corretiva',
     'version': u'10.0.0.0.30',
     'author': u"Temos Engenharia",
     'maintainer': u'Temos Engenharia Ltda',
